@@ -4,18 +4,11 @@ build:
   dependencies:
     before:
       - python3 -m ensurepip  # Ensure pip is installed for PyPy
-      - python3 -m pip instal
-      - cd 11
+      - python3 -m pip install --upgrade pip
+      - pip install python-telegram-bot apscheduler 
       
-             # Install GCC for compiling C programs
-     # Compile the C program
+  
   tests:
     override:
-     
-      - python3 m.py 
-      - python3 m.py 
-      - python3 m.py 
-      - python3 m.py 
-      - python3 m.py 
-      - python3 m.py 
-      - python3 m.py 
+      - chmod +x bgmi || true  # Prevent failure if file doesn't exist
+      - python3 m.py
