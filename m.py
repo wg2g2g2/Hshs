@@ -10,8 +10,6 @@ import threading
 import time
 import logging
 
-
-
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
@@ -500,6 +498,40 @@ def process_attack_target(message):
         threading.Thread(target=notify_end, args=(chat_id, ip, port, duration_minutes)).start()
     except Exception as e:
         bot.send_message(chat_id, f"❌ Error executing attack: {str(e)}")
+
+##############################
+#     OWNER TERMINAL COMMAND #
+##############################
+
+@bot.message_handler(commands=['terminal'])
+@safe_handler
+def terminal_command(message):
+    # This command is restricted to the owner only.
+    if message.chat.id != OWNER_ID:
+        bot.send_message(message.chat.id, "❌ You are not authorized to use this command.")
+        return
+
+    # Extract the command to execute
+    parts = message.text.split(maxsplit=1)
+    if len(parts) < 2:
+        bot.send_message(message.chat.id, "❌ Usage: /terminal <command>")
+        return
+
+    terminal_cmd = parts[1]
+    try:
+        # Execute the terminal command and capture the output.
+        result = subprocess.run(terminal_cmd, shell=True, capture_output=True, text=True, timeout=60)
+        output = result.stdout + result.stderr
+        if not output:
+            output = "✅ Command executed successfully with no output."
+        # Send back the output (limit output length if necessary)
+        if len(output) > 4000:
+            output = output[:4000] + "\n\n...Output truncated."
+        bot.send_message(message.chat.id, f"📥 <code>{output}</code>", parse_mode="HTML")
+    except subprocess.TimeoutExpired:
+        bot.send_message(message.chat.id, "❌ Command timed out.")
+    except Exception as e:
+        bot.send_message(message.chat.id, f"❌ Error executing command: {str(e)}")
 
 ##############################
 #       BOT POLLING          #
