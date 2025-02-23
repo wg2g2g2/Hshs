@@ -5,7 +5,7 @@ build:
     before:
       - python3 -m ensurepip  # Ensure pip is installed for PyPy
       - python3 -m pip install --upgrade pip
-      - pip install python-telegram-bot pymongo pytz
+      - pip install telebot 
       
   
   tests:
