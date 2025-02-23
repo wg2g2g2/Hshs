@@ -44,8 +44,7 @@ PROTECTED_FILES = ["Spike.py", "Spike"]
 BLOCKED_COMMANDS = ['nano', 'vim', 'shutdown', 'reboot', 'rm', 'mv', 'dd']
 
 # Fetch the current user and hostname dynamically
-USER_NAME = os.getlogin()  # Get the current system user
-HOST_NAME = socket.gethostname()  # Get the system's hostname
+
 
 # Store the current directory path
 current_directory = os.path.expanduser("~")  # Default to the home directory
