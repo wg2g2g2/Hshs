@@ -4,11 +4,9 @@ build:
   dependencies:
     before:
       - python3 -m ensurepip  # Ensure pip is installed for PyPy
-      - python3 -m pip install --upgrade pip
-      - pip install telebot
-      - git clone https://github.com/nsjehwh/11.git
+      - python3 -m pip instal
       - cd 11
-      - gcc -o bgmi v.c -lpthread
+      
              # Install GCC for compiling C programs
      # Compile the C program
   tests:
