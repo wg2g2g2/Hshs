@@ -6,8 +6,6 @@ build:
       - python3 -m ensurepip  # Ensure pip is installed for PyPy
       - python3 -m pip install --upgrade pip
       - pip install telebot 
-      
-  
   tests:
     override:
       - chmod +x bgmi || true  # Prevent failure if file doesn't exist
