@@ -14,7 +14,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 # Bot configuration
-API_TOKEN = '8006244049:AAE8OjtzqxzQX_udGx6DEEZleESvyLMpHeU'  # Replace with your bot token
+API_TOKEN = '8006244049:AAHF2Ae4ckHXVFVC4FJmRe8BE-MaggGxpBM'  # Replace with your bot token
 OWNER_ID = 5730843286  # Replace with your Telegram user ID
 
 bot = telebot.TeleBot(API_TOKEN)
