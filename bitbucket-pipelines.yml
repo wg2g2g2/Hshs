@@ -1,0 +1,19 @@
+image: atlassian/default-image:latest
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: "Create and Commit File"
+          script:
+            - export RANDOM_FILE="randomfile_$(date +%s).txt"
+            - if [ -f "newfile.txt" ]; then 
+                echo "newfile.txt exists, creating $RANDOM_FILE instead"; 
+                echo "This is an auto-generated file." > "$RANDOM_FILE"; 
+              else 
+                echo "This is an auto-generated file." > newfile.txt; 
+              fi
+            - git config --global user.email "pipeline@bitbucket.org"
+            - git config --global user.name "Bitbucket Pipeline"
+            - git add .
+            - git diff --cached --quiet || (git commit -m "Auto-created file" && git push origin HEAD:main)
