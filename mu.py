@@ -12,7 +12,7 @@ from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 
 # Bot configuration
-API_TOKEN = '8006244049:AAF0wUhpdLmHkVOZzHzaDlmPAmYPasa1E-M'  # Replace with your bot token
+API_TOKEN = '8006244049:AAFzWbgWMQ9EtbeMT7tH0jGvGqhaN1ohmd4'  # Replace with your bot token
 OWNER_ID = 5730843286             # Replace with your Telegram user ID
 
 bot = telebot.TeleBot(API_TOKEN)
